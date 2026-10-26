@@ -1,0 +1,18 @@
+name: Sync Leetcode Past Submissions
+
+on:
+  workflow_dispatch: # Allows you to trigger this manually at any time
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sync Submissions
+        uses: joshcai/leetcode-sync@v1.7
+        with:
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          destination-folder: solutions # Puts questions cleanly in a "solutions" folder
+          verbose: true
